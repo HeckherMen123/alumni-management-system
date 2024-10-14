@@ -1,0 +1,30 @@
+<div class="nav">
+  Alumni Management System
+</div>
+<div class="register-container">
+    <div class="register-left">
+      <form class="register-form" (ngSubmit)="register()">
+        <h2>Register an Account</h2>
+        <label for="username">Email:</label>
+        <input
+        type="email"
+        id="username"
+        name="username"
+        [(ngModel)]="username"
+        required
+      />
+        
+        <label for="password">Password:</label>
+        <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+
+        <button class="btn-register" type="submit">Register</button>
+        <a routerLink="login">Have an existing account? Login instead!</a>
+      </form>
+      </div>
+    </div>

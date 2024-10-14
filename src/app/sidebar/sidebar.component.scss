@@ -1,0 +1,142 @@
+.sidenav-container {
+    height: 100vh;
+  }
+
+mat-toolbar{
+    padding-left: 0px;
+    padding-right: 0px;
+    border:#330A19 5px;
+  }
+
+  .sidenav {
+    width: 240px;
+    /* Adjust width as needed */
+    background-color: #4A213A;
+    /* Deep maroon-like color */
+    color: white;
+    /* Text and icon color */
+  }
+
+  .mat-sidenav {
+    width: 250px;
+    border:0px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  a[mat-list-item]:hover {
+    background-color: #704057;
+    /* Slightly lighter color on hover */
+  }
+
+  /* Profile image */
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 16px auto;
+  }
+
+  .sidenav-header {
+    text-align: center;
+    background-color: #5E3D53;
+    /* Slightly darker color for the profile area */
+    padding: 16px 0;
+  }
+
+  .nav-item {
+    padding-top: 15px;
+  }
+
+  mat-nav-list {
+    padding: 0;
+  }
+
+  a[mat-list-item] {
+    display: flex;
+    vertical-align: middle;
+    color: white;
+    padding-bottom: 15px;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    justify-content: center;
+  }
+
+  a[mat-list-item] span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* Icons inside the sidebar */
+  mat-icon {
+    vertical-align: middle;
+    font-size: 26px;
+    margin-top: 3px;
+    margin-bottom: 6px;
+    margin-right: 15px;
+    color: white;
+    /* Ensures the icons are white */
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  .event-card {
+    display: flex;
+    margin-bottom: 24px;
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  button[mat-icon-button] {
+    background-color: transparent;
+    /* Removes the background color */
+    border: none;
+    /* Ensures no border is applied */
+    box-shadow: none;
+    /* Removes any shadow that could be causing the white box */
+    margin: 0;
+    /* Resets any margin */
+    padding: 0;
+    /* Resets any padding */
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  .event-details {
+    flex-grow: 1;
+  }
+
+  .event-details h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .event-details p {
+    margin: 8px 0;
+  }
+
+  .event-details a {
+    color: blue;
+  }
+
+  .nav {
+    top: 0;
+    width: 100%;
+    background-color: #330A19;
+    color: #fff;
+    display: flex;
+    padding: 0 16px;
+    align-items: center;
+    height: 56px;
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+  }

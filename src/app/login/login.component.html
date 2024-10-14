@@ -1,0 +1,43 @@
+<div class="nav">
+  Alumni Management System
+</div>
+<div class="login-container">
+  <div class="login-left">
+    <form class="login-form" #loginForm="ngForm">
+      <h2>Login</h2>
+
+      <label for="username">Username:</label>
+      <input
+        type="text"
+        id="username"
+        name="username"
+        [(ngModel)]="username"
+        required
+      />
+      <div *ngIf="loginForm.submitted && !username" class="error">
+        Username is required.
+      </div>
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+      />
+      <div *ngIf="loginForm.submitted && !password" class="error">
+        Password is required.
+      </div>
+
+      <button
+        class="btn-login"
+        [disabled]="!loginForm.valid"
+        (click)="gotoHome()"
+      >
+        Login
+      </button>
+      <a href="register">No account? Register now!</a>
+    </form>
+  </div>
+</div>
