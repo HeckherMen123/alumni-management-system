@@ -20,7 +20,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AchievementpageComponent } from './achievementpage/achievementpage.component';
 import { EventpageComponent } from './eventpage/eventpage.component';
-import { SidebarComponent } from './sidebar/sidebar.component'; // <-- Add this import
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NewAchievementComponent } from './new-achievement/new-achievement.component'; // <-- Add this import
+import { NgxEditorModule } from 'ngx-editor';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -31,7 +34,8 @@ import { SidebarComponent } from './sidebar/sidebar.component'; // <-- Add this 
     HomepageComponent,
     AchievementpageComponent,
     EventpageComponent,
-    SidebarComponent
+    SidebarComponent,
+    NewAchievementComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { SidebarComponent } from './sidebar/sidebar.component'; // <-- Add this 
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    NgxEditorModule,
+    MatCardModule
   ],
   providers: [
     provideAnimationsAsync()

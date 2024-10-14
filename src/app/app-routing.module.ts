@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { AchievementpageComponent } from './achievementpage/achievementpage.component';
 import { EventpageComponent } from './eventpage/eventpage.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { NewAchievementComponent } from './new-achievement/new-achievement.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'homepage', component: HomepageComponent},
   { path: 'achievements', component: AchievementpageComponent },
   { path: 'events', component: EventpageComponent },
+  { path: 'new-achievements', component: NewAchievementComponent }
     ]
   },
   { path: 'login', component: LoginComponent },

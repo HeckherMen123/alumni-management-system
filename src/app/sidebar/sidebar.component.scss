@@ -50,6 +50,7 @@ mat-toolbar{
 
   mat-nav-list {
     padding: 0;
+    color: white;
   }
 
   a[mat-list-item] {
@@ -80,6 +81,10 @@ mat-toolbar{
     margin-right: 15px;
     color: white;
     /* Ensures the icons are white */
+  }
+
+  .nav-title{
+    color: white;
   }
 
   .content {

@@ -1,0 +1,34 @@
+.achievement-post-header{
+    margin-top: 40px;
+}
+
+.NgxEditor__Wrapper, .ProseMirror .NgxEditor__Content{
+    height: auto;
+    min-height: 400px;
+}
+
+.post-button, .cancel-button {
+    color: white;
+    padding: 10px;
+    width: 150px;
+    border-radius: 10px;
+    border: none;
+    margin-right: 10px;
+}
+
+.cancel-button{
+    background-color: #330A19;
+
+}
+
+.post-button{
+    background-color: #4D0239;
+}
+
+.file-picker{
+    padding: 30px;
+}
+
+.button-container{
+    margin-top: 30px;
+}
