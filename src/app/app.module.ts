@@ -24,8 +24,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { NewAchievementComponent } from './new-achievement/new-achievement.component'; // <-- Add this import
 import {MatCardModule} from '@angular/material/card';
 import { QuillModule } from 'ngx-quill';
-import { Firestore } from '@angular/fire/firestore';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),  // Initialize Firebase,
+    //AngularFireModule.initializeApp(firebaseConfig),  // Initialize Firebase,
     AngularFireAuthModule,  // Import Firebase authentication module
     MatSidenavModule,
     MatToolbarModule,
@@ -55,7 +56,9 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
   ],
   providers: [
     provideAnimationsAsync(),
-    { provide: FIREBASE_OPTIONS, useValue: firebaseConfig }
+    provideFirebaseApp( () => initializeApp(firebaseConfig)),
+    provideFirestore(() => getFirestore()),
+    { provide: FIREBASE_OPTIONS, useValue: firebaseConfig },
   ],
   bootstrap: [AppComponent]
 })
