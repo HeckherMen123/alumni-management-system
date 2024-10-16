@@ -22,8 +22,10 @@ import { AchievementpageComponent } from './achievementpage/achievementpage.comp
 import { EventpageComponent } from './eventpage/eventpage.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NewAchievementComponent } from './new-achievement/new-achievement.component'; // <-- Add this import
-import { NgxEditorModule } from 'ngx-editor';
 import {MatCardModule} from '@angular/material/card';
+import { QuillModule } from 'ngx-quill';
+import { Firestore } from '@angular/fire/firestore';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 
 @NgModule({
@@ -42,17 +44,18 @@ import {MatCardModule} from '@angular/material/card';
     BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
-    AngularFireModule.initializeApp(firebaseConfig),  // Initialize Firebase
+    AngularFireModule.initializeApp(firebaseConfig),  // Initialize Firebase,
     AngularFireAuthModule,  // Import Firebase authentication module
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
     MatIconModule,
-    NgxEditorModule,
-    MatCardModule
+    MatCardModule,
+    QuillModule.forRoot()
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: FIREBASE_OPTIONS, useValue: firebaseConfig }
   ],
   bootstrap: [AppComponent]
 })

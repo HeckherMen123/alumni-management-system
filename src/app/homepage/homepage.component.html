@@ -1,1 +1,12 @@
-
+<div class="home-page-container">
+    <h2>Recent School Activities</h2>
+    <div class="event-card" *ngFor="let event of events">
+      <img src="assets/event-image.jpg" alt="Event Image" class="event-image">
+      <div class="event-details">
+        <h3>{{ event.title }}</h3>
+        <p>{{ event.description }}</p>
+        <a href="{{ event.link }}" class="read-more">Read More</a>
+      </div>
+    </div>
+  </div>
+  

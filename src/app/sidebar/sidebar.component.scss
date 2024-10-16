@@ -5,16 +5,18 @@
 mat-toolbar{
     padding-left: 0px;
     padding-right: 0px;
-    border:#330A19 5px;
+    padding: 0px;
+    border:#330A19 0px;
   }
 
   .sidenav {
     width: 240px;
     /* Adjust width as needed */
-    background-color: #4A213A;
+    background-color: #330A19;
     /* Deep maroon-like color */
     color: white;
     /* Text and icon color */
+    border-radius: 0;
   }
 
   .mat-sidenav {
@@ -42,6 +44,8 @@ mat-toolbar{
     background-color: #5E3D53;
     /* Slightly darker color for the profile area */
     padding: 16px 0;
+    margin-top: 30px;
+    height: auto;
   }
 
   .nav-item {
@@ -144,4 +148,8 @@ mat-toolbar{
     align-items: center;
     height: 56px;
     font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+  }
+
+  .website-banner{
+    margin-top: -5px;
   }

@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-homepage',
+  selector: 'app-eventpage',
   templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.scss'
+  styleUrls: ['./homepage.component.scss']
 })
 export class HomepageComponent implements OnInit {
 
-  // Define the events array with some mock data
+  // Define the 'events' array
   events = [
     {
-      title: 'Event title 1',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
-      image: 'path-to-image1.jpg'
+      title: 'Event 1',
+      description: 'This is a description for Event 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      link: '#'
     },
     {
-      title: 'Event title 2',
-      description: 'Vivamus eget nulla arcu. Nunc vestibulum tincidunt lectus...',
-      image: 'path-to-image2.jpg'
+      title: 'Event 2',
+      description: 'This is a description for Event 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      link: '#'
     },
     {
-      title: 'Event title 3',
-      description: 'Aenean et velit at est accumsan bibendum...',
-      image: 'path-to-image3.jpg'
+      title: 'Event 3',
+      description: 'This is a description for Event 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      link: '#'
     }
   ];
 

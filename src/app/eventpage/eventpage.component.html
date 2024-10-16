@@ -1,1 +1,14 @@
-<p>eventpage works!</p>
+<div class="event-page-container">
+    <h2>Activities and Events</h2>
+    <div class="event-grid">
+      <div class="event-card" *ngFor="let event of events">
+        <img src="assets/event-image.jpg" alt="Event Image" class="event-image">
+        <div class="event-details">
+          <h3>{{ event.title }}</h3>
+          <p>{{ event.description }}</p>
+        </div>
+        <button class="view-more">View More</button>
+      </div>
+    </div>
+  </div>
+  
