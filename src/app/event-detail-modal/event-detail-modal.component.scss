@@ -1,59 +1,66 @@
 /* Styles for the Event Detail Modal */
 .event-modal-container {
-    padding: 30px;
-  }
-  
-  .event-modal-container h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .event-modal-container p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
-  }
-  
-  .event-modal-container p strong {
-    color: #333;
-  }
-  
-  .event-modal-details {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  .event-modal-details div {
-    width: 45%;
-  }
-  
-  .event-modal-details p {
-    margin: 5px 0;
-  }
-  
-  .mat-dialog-container {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 600px; /* Width of the dialog */
-    width: 100%;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: #333;
-  }
-  
-  .dialog-title-image {
-    width: 100px; /* Adjust width as needed */
-    height: auto; /* Maintain aspect ratio */
-    display: block;
-    margin: 0 auto;
-  }
+  padding: 30px;
+}
+
+.event-modal-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.event-modal-container p {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.event-modal-container p strong {
+  color: #333;
+}
+
+.event-modal-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.event-modal-details div {
+  width: 45%;
+}
+
+.event-modal-details p {
+  margin: 5px 0;
+}
+
+.mat-dialog-container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 90%;
+  /* Adjust the percentage as needed */
+
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #333;
+}
+
+.full-width-image {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0
+}
+
+.full-width-image img {
+  width: 100%;
+  height: auto;
+  max-height: 200px;
+}

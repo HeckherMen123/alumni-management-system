@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
-import {EventService} from '../eventservice.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EventService } from '../eventservice.service';
 import { EventDetailModalComponent } from '../event-detail-modal/event-detail-modal.component';
 
 @Component({
@@ -14,7 +14,7 @@ export class EventpageComponent implements OnInit {
   constructor(
     private eventService: EventService,  // Inject EventService
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     // Fetch events from Firebase
