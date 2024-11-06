@@ -1,0 +1,89 @@
+/* Overall page background */
+body {
+  background-color: #FBEAE7; /* Light pink background */
+  font-family: 'Arial', sans-serif;
+  color: #4A4A4A; /* Dark text */
+  margin: 0;
+  padding: 0;
+}
+
+.custom-toolbar {
+  width: 100%; /* Ensure the toolbar takes the full width */
+  background-color: #4A002D; /* Burgundy background color */
+  color: white; /* White text color */
+  display: flex; /* Align items inside flexbox */
+  justify-content: left; /* Center the title */
+  font-size: 20px; /* Adjust the font size of the toolbar title */
+}
+
+.custom-toolbar span {
+  font-weight: bold; /* Make the title bold */
+}
+/* Header styling (Navbar area) */
+header {
+  background-color: #4A002D; /* Burgundy color for header */
+  color: white;
+  padding: 10px;
+  font-size: 24px;
+  text-align: left;
+}
+
+/* Container for dashboard */
+.container {
+  width: 80%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+/* Dashboard title */
+.title {
+  color: #4A002D; /* Burgundy color */
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+/* Table styling */
+.approval-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white; /* White background for table */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for the table */
+}
+
+.approval-table th,
+.approval-table td {
+  border: 1px solid #D3D3D3; /* Light grey border */
+  padding: 12px 15px;
+  text-align: left;
+}
+
+/* Table header styling */
+.approval-table th {
+  background-color: #4A002D; /* Burgundy header */
+  color: white;
+  font-size: 16px;
+}
+
+/* Action buttons */
+.approve-btn, .reject-btn {
+  background-color: #4A002D; /* Burgundy color */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 5px;
+}
+
+.approve-btn:hover {
+  background-color: #3C0024;
+}
+
+.reject-btn {
+  background-color: #D32F2F; /* Red color for reject button */
+}
+
+.reject-btn:hover {
+  background-color: #A00A0A;
+}

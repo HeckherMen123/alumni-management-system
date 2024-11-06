@@ -5,24 +5,27 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AchievementpageComponent } from './achievementpage/achievementpage.component';
 import { EventpageComponent } from './eventpage/eventpage.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { NewAchievementComponent } from './new-achievement/new-achievement.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard} from './auth.guard';
+import { RoleGuard } from './role.guard';
+import { AdminapprovalComponent } from './adminapproval/adminapproval.component';
+import { AdmineventComponent } from './adminevent/adminevent.component';
+import { NewadmineventComponent } from './newadminevent/newadminevent.component';
 
 const routes: Routes = [
-  {
-    path:'',
-  component: SidebarComponent,
-  children:[
-  { path: 'homepage', component: HomepageComponent},
-  { path: 'achievements', component: AchievementpageComponent },
-  { path: 'events', component: EventpageComponent },
-  { path: 'new-achievements', component: NewAchievementComponent }
-    ]
-  },
+  { path: 'homepage', component: HomepageComponent, canActivate:[AuthGuard]},
+  { path: 'achievements', component: AchievementpageComponent, canActivate:[AuthGuard]},
+  { path: 'events', component: EventpageComponent, canActivate:[AuthGuard] },
+  { path: 'new-achievements', component: NewAchievementComponent, canActivate:[AuthGuard]},
+  { path: 'profiles', component: ProfileComponent, canActivate:[AuthGuard]},
+  { path: 'adminapproval', component: AdminapprovalComponent, canActivate:[RoleGuard,AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'adminevent', component: AdmineventComponent, canActivate:[RoleGuard, AuthGuard]},
+  { path: 'new-event', component: NewadmineventComponent, canActivate:[RoleGuard, AuthGuard]},
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirect empty path to login
-  { path: '**', redirectTo: '/login' } // Redirect unknown paths to login or a 404 component
+  { path: '**', redirectTo: '/login' },                  // Redirect unknown paths to login
 ];
 
 @NgModule({

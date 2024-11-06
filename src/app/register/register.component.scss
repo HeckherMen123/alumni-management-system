@@ -3,7 +3,7 @@
   height: 100vh;
 }
 
-.register-form{
+.register-form {
   background-color: white;
   max-width: 600px;
   margin: 120px auto;
@@ -13,16 +13,37 @@
   text-align: center;
 }
 
-#password{
-  margin-bottom: 25px;
+.register-form input {
+  width: 100%;
+  padding: 12px; /* Set consistent padding */
+  margin-top: 10px; /* Reduce margin between input fields */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-.btn-register{
-  margin-left: 30px;
-  margin-right: 30px;
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="text"] {
+  height: 45px; /* Set consistent height for inputs */
 }
 
-.register-left, .register-right {
+#password {
+  margin-bottom: 10px; /* Reduce bottom margin to make the fields closer */
+}
+
+.btn-register {
+  margin-top: 20px; /* Space the button from the student ID field */
+  padding: 12px 30px; /* Set consistent padding for the button */
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #330A19;
+  color: #fff;
+  border: none;
+}
+
+.register-left,
+.register-right {
   flex: 1;
   display: flex;
   align-items: center;

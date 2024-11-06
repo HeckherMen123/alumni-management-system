@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
+import {EventService} from '../eventservice.service';
+import { EventDetailModalComponent } from '../event-detail-modal/event-detail-modal.component';
 
 @Component({
   selector: 'app-eventpage',
@@ -6,43 +9,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./eventpage.component.scss']
 })
 export class EventpageComponent implements OnInit {
+  events: any[] = []; // Initialize as an empty array
 
-  // Declare the 'events' array
-  events = [
-    {
-      title: 'Event 1',
-      description: 'This is a description for Event 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#'
-    },
-    {
-      title: 'Event 2',
-      description: 'This is a description for Event 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#'
-    },
-    {
-      title: 'Event 3',
-      description: 'This is a description for Event 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#'
-    },
-    {
-      title: 'Event 4',
-      description: 'This is a description for Event 4. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#'
-    },
-    {
-      title: 'Event 5',
-      description: 'This is a description for Event 5. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#'
-    },
-    {
-      title: 'Event 6',
-      description: 'This is a description for Event 6. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-      link: '#'
-    }
-  ];
+  constructor(
+    private eventService: EventService,  // Inject EventService
+    public dialog: MatDialog
+  ) {}
 
-  constructor() {}
+  ngOnInit(): void {
+    // Fetch events from Firebase
+    this.eventService.getEvents().subscribe(data => {
+      this.events = data;
+    });
+  }
 
-  ngOnInit(): void {}
-
+  // Method to open the modal dialog with event details
+  openDialog(event: any): void {
+    this.dialog.open(EventDetailModalComponent, {
+      data: event,
+      width: '600px'
+    });
+  }
 }

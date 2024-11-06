@@ -21,14 +21,17 @@ export class NewAchievementComponent {
   public achievementModel = {
     content : "",
     submitted_by: "",
-    created_on: ""
+    created_on: "",
+    status: 0,
   }
+
+  quillEditorRef: any;
 
 
   public dateToday = new Date();
 
   constructor(
-    private route: Router,
+    private route: Router
   ){
   }
 
@@ -40,7 +43,50 @@ export class NewAchievementComponent {
         this.currentUser = user;
       }
     });
+  }
 
+  getEditorInstance(editorInstance: any) {
+    this.quillEditorRef = editorInstance;
+    console.log(this.quillEditorRef)
+    const toolbar = editorInstance.getModule('toolbar');
+    toolbar.addHandler('image', this.imageHandler);
+  }
+
+  imageHandler = () => {console.log("testing log")
+    // const range = this.quillEditorRef.getSelection();
+    // const img = '<a href="https://image.flaticon.com/icons/png/128/126/126477.png" data-lightbox="image-1" data-title="My caption"> <div> <img src="https://image.flaticon.com/icons/png/128/126/126477.png" height="50"/> </div> </a>';
+    // this.quillEditorRef.clipboard.dangerouslyPasteHTML(range.index, img);
+
+    const range = this.quillEditorRef.getSelection();
+
+    const input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    input.setAttribute('accept', 'image/*');
+    input.click();
+
+    input.onchange = () => {
+      const file = input.files ? input.files[0] : null;
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          const quill = this.quillEditorRef;
+          const range = quill.getSelection(true);
+          quill.insertEmbed(range.index, 'image', e.target.result);
+
+          setTimeout(() => {
+            const img = document.querySelector(`img[src="${e.target.result}"]`) as HTMLImageElement;
+            console.log("test: ",img.outerHTML)
+            if (img) {
+              img.style.width = '300px'; // Set constant width
+              img.style.height = '200px'; // Set constant height
+              this.achievementModel.content = this.achievementModel.content + img.outerHTML
+            }
+          }, 100);
+            
+        };
+        reader.readAsDataURL(file);
+      }
+    };
   }
 
 
@@ -54,9 +100,11 @@ export class NewAchievementComponent {
     const docRef = await addDoc(collection(this.firestore, 'achievements'), {
       content: this.achievementModel.content,
       submitted_by: this.achievementModel.submitted_by,
-      created_on: this.achievementModel.created_on
+      created_on: this.achievementModel.created_on,
+      status: this.achievementModel.status
     });
     console.log("Document written with ID: ", docRef.id);
+    this.route.navigate(['achievements']);
   }
 
   testEvent(){

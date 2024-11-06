@@ -1,0 +1,40 @@
+<div class="adminevent-form">
+    <form [formGroup]="adminevent" (ngSubmit)="saveAevent()">
+      <div class="form-group">
+
+        <div class="inputs">
+            <div class="input-row">
+              <input formControlName="Title" placeholder="Event Title" />
+              <textarea formControlName="EventDesc" placeholder="Event Description"></textarea>
+            </div>
+  
+            <div class="input-row">
+              <input formControlName="Organizer" placeholder="Organizer" />
+              <input formControlName="Presenter" placeholder="Presenter" />
+            </div>
+  
+            <mat-form-field class="DatePicker">
+                <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="datepicker" />
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+                <mat-datepicker #datepicker>
+                    <mat-datepicker-actions>
+                        <button mat-button matDatepickerCancel>Cancel</button>
+                        <button mat-raised-button matDatepickerApply>Apply</button>
+                    </mat-datepicker-actions>
+                </mat-datepicker>
+            </mat-form-field>
+
+              <div class="input-row">
+                <input formControlName="Time" placeholder="Enter the Time" />
+            </div>
+          </div>
+        </div>
+
+      <div class="actions">
+        <button type="button" class="cancel" (click)="cancel()">Cancel</button>
+        <button type="submit" class="save" (click)="submitForm()">Submit</button>
+      </div>
+    </form>
+  </div>

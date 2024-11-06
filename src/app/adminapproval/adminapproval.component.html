@@ -1,0 +1,31 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+  <span>Alumni Management System</span>
+</mat-toolbar>
+
+<div class="container">
+  <h2 class="title">Achievement Approval Dashboard</h2>
+  <table class="approval-table">
+    <thead>
+      <tr>
+        <th>Content</th>
+        <th>Submitted By</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let achievement of achievements">
+        <td>
+          <div *ngIf="achievement.content.text">{{ achievement.content.text }}</div>
+          <img *ngIf="achievement.content.image" [src]="achievement.content.image" alt="Achievement Image" style="max-width: 100px; max-height: 100px;" />
+        </td>
+        <td>{{ achievement.submittedBy }}</td>
+        <td>{{ getStatusText(achievement.status) }}</td>
+        <td>
+          <button class="approve-btn" (click)="updateStatus(achievement.id, 1)">✔ Approve</button>
+          <button class="reject-btn" (click)="updateStatus(achievement.id, 2)">✘ Reject</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

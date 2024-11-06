@@ -8,8 +8,9 @@
     </div> -->
 
     <div>
-        <quill-editor [styles]="{height: '400px'}" [(ngModel)]="achievementModel.content"></quill-editor>
+        <quill-editor [styles]="{height: '400px'}" (onEditorCreated)="getEditorInstance($event)" [(ngModel)]="achievementModel.content"></quill-editor>
     </div>
+    
 
     <!-- <h4 class="form-label">Attachments</h4>
     <mat-card>

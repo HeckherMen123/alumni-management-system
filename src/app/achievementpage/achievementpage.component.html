@@ -1,1 +1,17 @@
-<p>achievementspage works!</p>
+<div class="achievements-page">
+    <div class="header">
+      <h1>Achievements</h1>
+      <button class="new-post-button" (click)="goToNewPost()">New Post</button>
+    </div>
+  
+    <div class="achievements-list" *ngIf="achievements && achievements.length">
+      <div class="achievement-card" *ngFor="let achievement of achievements">
+        <div class="achievement-info">
+          <img src="path_to_profile_image" class="profile-img" alt="Profile" />
+          <div [innerHTML]="achievement.content"></div>
+        </div>
+        
+      </div>
+    </div>
+</div>
+  

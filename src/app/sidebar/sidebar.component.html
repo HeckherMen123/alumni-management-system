@@ -17,9 +17,13 @@
         <mat-icon>event</mat-icon>
         <span class="nav-title">Events</span>
       </a>
-      <a class="nav-item" mat-list-item href="#">
+      <a class="nav-item" mat-list-item href="profiles">
         <mat-icon>account_circle</mat-icon>
         <span class="nav-title">Profile</span>
+      </a>
+      <a class="nav-item" mat-list-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span class="nav-title">Logout</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>

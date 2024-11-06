@@ -4,3 +4,17 @@ body{
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.custom-toolbar {
+    width: 100%; /* Ensure the toolbar takes the full width */
+    background-color: #4A002D; /* Burgundy background color */
+    color: white; /* White text color */
+    display: flex; /* Align items inside flexbox */
+    justify-content: center; /* Center the title */
+    font-size: 20px; /* Adjust the font size of the toolbar title */
+  }
+  
+  .custom-toolbar span {
+    font-weight: bold; /* Make the title bold */
+  }
+  

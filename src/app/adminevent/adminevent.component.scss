@@ -1,0 +1,68 @@
+.adminevents-page {
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .new-post-button {
+    background-color: #4b1d3f;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .adminevents-list {
+    margin-top: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .adminevent-card {
+    background-color: white;
+    padding: 20px;
+    width: 450px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    
+    gap: 10px;
+  }
+  
+  .adminevent-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  
+  .text-content h3 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .text-content p {
+    margin: 4px 0;
+  }
+  
+  .view-certificate {
+    color: #4b1d3f;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .view-certificate:hover {
+    text-decoration: underline;
+  }
+  
+  .adminevent-image {
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 8px;
+  }
+  
