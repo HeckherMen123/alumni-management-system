@@ -7,7 +7,6 @@
     <div class="achievements-list" *ngIf="achievements && achievements.length">
       <div class="achievement-card" *ngFor="let achievement of achievements">
         <div class="achievement-info">
-          <img src="path_to_profile_image" class="profile-img" alt="Profile" />
           <div [innerHTML]="achievement.content"></div>
         </div>
         
