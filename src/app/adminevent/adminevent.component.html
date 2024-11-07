@@ -12,7 +12,7 @@
         <p>{{ event.description }}</p>
       </div>
       <button class="view-more" (click)="openDialog(event)">View More</button>
-      <button class="reject-btn" (click)="deletePost(event)">Delete</button>
+      <button class="reject-btn" (click)="deletePost(event.id)">Delete</button>
     </div>
   </div>
 </div>

@@ -11,13 +11,13 @@ export class EventService {
 
   // Method to fetch events from Firebase Firestore
   getEvents() {
-    return this.firestore.collection('events').valueChanges();
+    return this.firestore.collection('events').valueChanges({ idField: 'id' });
   }
 
   getLast3Events() {
     return this.firestore
       .collection('events', (ref) => ref.orderBy('date', 'desc').limit(3))
-      .valueChanges();
+      .valueChanges({ idField: 'id' });
   }
 
   createEvent(event: AlumniEvent) {
@@ -28,7 +28,7 @@ export class EventService {
     this.firestore.doc('events/' + event.id).update(event);
   }
 
-  deleteEvent(eventId: AlumniEvent) {
+  deleteEvent(eventId: string) {
     this.firestore.doc('events/' + eventId).delete();
   }
 }

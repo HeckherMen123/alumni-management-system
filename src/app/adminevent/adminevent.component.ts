@@ -24,12 +24,13 @@ export class AdmineventComponent {
     private eventService: EventService,
     // Inject MatDialog directly in the constructor arguments
     public dialog: MatDialog
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     // Fetch events from Firebase
-    this.eventService.getEvents().subscribe(data => {
+    this.eventService.getEvents().subscribe((data) => {
       this.events = data;
+      console.log(data);
     });
   }
 
@@ -37,7 +38,7 @@ export class AdmineventComponent {
   openDialog(event: any): void {
     this.dialog.open(EventDetailModalComponent, {
       data: event,
-      width: '600px'
+      width: '600px',
     });
   }
 
@@ -46,11 +47,7 @@ export class AdmineventComponent {
     this.router.navigateByUrl('new-event'); // Adjust the route if needed
   }
 
-  deletePost(eventId: string) {
-    this.afs.doc(`events/${eventId}`).delete()
-      .then(() => {
-        console.log('Event deleted successfully!');
-        // Handle success, e.g., update the UI or display a message
-      })
-}
+  deletePost(id: string) {
+    this.eventService.deleteEvent(id);
+  }
 }
