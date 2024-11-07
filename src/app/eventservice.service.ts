@@ -14,6 +14,12 @@ export class EventService {
     return this.firestore.collection('events').valueChanges();
   }
 
+  getLast3Events() {
+    return this.firestore
+      .collection('events', (ref) => ref.orderBy('date', 'desc').limit(3))
+      .valueChanges();
+  }
+
   createEvent(event: AlumniEvent) {
     return this.firestore.collection('events').add(event);
   }

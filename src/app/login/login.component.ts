@@ -7,7 +7,6 @@ import { firebaseConfig } from '../../firebase.config';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { AuthService } from '../auth.service';
 
-
 interface User {
   role: string;
   // Add any other fields you expect in the user document
@@ -16,7 +15,7 @@ interface User {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent {
   username: string = '';
@@ -29,14 +28,15 @@ export class LoginComponent {
     private firestore: AngularFirestore,
     private authService: AuthService
   ) {
-    console.log(this.firestore);  // Check if Firestore is undefined
+    console.log(this.firestore); // Check if Firestore is undefined
   }
 
   async gotoHome() {
     try {
       const userData = await this.authService.login(
         this.username,
-        this.password)
+        this.password
+      );
 
       if (userData && userData.role) {
         const role = userData.role; // Use the role directly
@@ -45,13 +45,13 @@ export class LoginComponent {
         // Navigate to different routes based on the user role
         if (this.authService.isAdmin()) {
           console.log('Navigating to adminapproval');
-          await this.router.navigate(['adminapproval']); // Redirect to Admin dashboard
+          this.router.navigate(['adminapproval']); // Redirect to Admin dashboard
         } else if (this.authService.isUser()) {
           console.log('Navigating to homepage');
-          await this.router.navigate(['homepage']); // Redirect to user homepage
+          this.router.navigate(['homepage']); // Redirect to user homepage
         } else {
           console.warn('Role not recognized. Redirecting to login.');
-          await this.router.navigate(['/login']); // Redirect to a default page if the role is not recognized
+          this.router.navigate(['/login']); // Redirect to a default page if the role is not recognized
         }
       } else {
         alert('Role not found for user.');
@@ -61,4 +61,4 @@ export class LoginComponent {
       alert('Login failed. Please check your credentials.');
     }
   }
-}  
+}

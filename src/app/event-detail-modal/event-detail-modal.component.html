@@ -9,7 +9,7 @@
   <p>{{ data.description }}</p>
   <div class="event-modal-details">
     <div>
-      <p><strong>Date:</strong> {{ data.date }}</p>
+      <p><strong>Date:</strong> {{ data.date.toDate() | date }}</p>
       <p><strong>Time:</strong> {{ data.time }}</p>
       <p><strong>Venue:</strong> {{ data.venue }}</p>
     </div>

@@ -1,11 +1,12 @@
 <div class="home-page-container">
     <h2>Recent School Activities</h2>
-    <div class="event-card" *ngFor="let event of events">
-      <img src="assets/event-image.jpg" alt="Event Image" class="event-image">
+    <div class="event-card" *ngFor="let event of eventAchievements">
+      <img *ngIf="event.title" src="/event-image.jpeg" alt="Event Image" class="event-image">
+      <img *ngIf="event.content" src="/achievement-image.jpeg" alt="Achievement Image" class="achievement-image">
       <div class="event-details">
-        <h3>{{ event.title }}</h3>
-        <p>{{ event.description }}</p>
-        <a routerLink="{{ event.link }}" class="read-more">Read More</a>
+        <h3 *ngIf="event.title">{{ event.title }}</h3>
+        <p *ngIf="event.description">{{ event.description }}</p>
+        <div *ngIf="event.content" [innerHTML]="event.content"></div>
       </div>
     </div>
   </div>
