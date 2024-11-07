@@ -1,31 +1,54 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { UserCredential } from 'firebase/auth';
+import firebase from 'firebase/compat/app';
+
+interface User {
+  role: string;
+  // Add any other fields you expect in the user document
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth) {}
+  userData?: User;
 
-  // Simulate a method to get the current user
-  getUser() {
-    const user = JSON.parse(localStorage.getItem('user') || '{}'); // Example, adjust based on your storage method
-    return user; // user should have a role property
-  }
+  constructor(private afAuth: AngularFireAuth,
+    private firestore: AngularFirestore,) { }
 
   // Simulate login
-  login(credentials: { username: string, password: string }) {
-    // Assume a real auth system, for now we'll mock the result
-    const mockUser = {
-      username: credentials.username,
-      role: credentials.username === 'admin' ? 'admin' : 'user',
-    };
-
-    localStorage.setItem('user', JSON.stringify(mockUser));
-    return mockUser;
+  async login(username: string, password: string) {
+    const userCredential = await this.afAuth.signInWithEmailAndPassword(
+      username,
+      password
+    );
+    console.log('Login successful:', userCredential);
+    const userData = await this.getUser(userCredential)
+    return userData
   }
 
-  logout(): Promise<void>{
+  async getUser(userCredential: { additionalUserInfo?: firebase.auth.AdditionalUserInfo | null | undefined; credential?: firebase.auth.AuthCredential | null; operationType?: string | null | undefined; user: any; } | undefined) {
+    const userId = userCredential?.user?.uid;
+
+    // Fetch user role from Firestore
+    const userDoc = await this.firestore.collection('users').doc(userId).get().toPromise();
+    const userData = userDoc?.data() as User;
+    this.userData = userData
+    console.log(this.userData)
+    return userData;
+  }
+
+  isAdmin() {
+    return this.userData?.role == "admin"
+  }
+
+  isUser() {
+    return this.userData?.role == "user"
+  }
+
+  logout(): Promise<void> {
     return this.afAuth.signOut();
   }
 }

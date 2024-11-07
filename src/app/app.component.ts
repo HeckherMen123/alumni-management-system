@@ -6,13 +6,13 @@ import { filter } from 'rxjs/operators';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  encapsulation: ViewEncapsulation.Emulated 
+  encapsulation: ViewEncapsulation.Emulated
 })
 export class AppComponent implements OnInit {
   showSidebarLayout: boolean = true;
-  routesWithoutSidebar: string[] = ['/login', '/register', '/adminapproval'];  // Routes that do not need sidebar
+  routesWithoutSidebar: string[] = ['/login', '/register'];  // Routes that do not need sidebar
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     // Subscribe to route changes

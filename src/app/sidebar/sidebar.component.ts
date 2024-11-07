@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
-  constructor(private authService: AuthService, private router: Router){}
+  constructor(private authService: AuthService, private router: Router) { }
 
   logout() {
     this.authService.logout()
@@ -19,5 +19,9 @@ export class SidebarComponent {
       .catch((error) => {
         console.error('Error during sign-out:', error);
       });
+  }
+
+  isAdmin() {
+    return this.authService.isAdmin()
   }
 }

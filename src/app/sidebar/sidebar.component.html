@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" [opened]="false" class="sidenav">
     <mat-toolbar color="primary" class="sidenav-header">
-      <img src="path-to-profile-image" alt="Profile" class="profile-image"/>
+      <img src="path-to-profile-image" alt="Profile" class="profile-image" />
     </mat-toolbar>
 
     <mat-nav-list>
@@ -21,6 +21,14 @@
         <mat-icon>account_circle</mat-icon>
         <span class="nav-title">Profile</span>
       </a>
+      <a *ngIf="isAdmin()" class="nav-item" mat-list-item href="adminapproval">
+        <mat-icon>account_circle</mat-icon>
+        <span class="nav-title">Admin Approval</span>
+      </a>
+      <a *ngIf="isAdmin()" class="nav-item" mat-list-item href="adminevent">
+        <mat-icon>account_circle</mat-icon>
+        <span class="nav-title">Admin Event</span>
+      </a>
       <a class="nav-item" mat-list-item (click)="logout()">
         <mat-icon>logout</mat-icon>
         <span class="nav-title">Logout</span>
@@ -31,13 +39,12 @@
   <mat-sidenav-content class="website-banner">
     <mat-toolbar color="primary">
       <div class="nav">
-          <button mat-icon-button (click)="sidenav.toggle()">
-            <mat-icon>menu</mat-icon>
-          </button>
-          Alumni Management System
-        </div>
-      </mat-toolbar>
-      <router-outlet></router-outlet>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        Alumni Management System
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-    

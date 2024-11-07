@@ -5,6 +5,7 @@ import { initializeApp } from '@angular/fire/app';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { firebaseConfig } from '../../firebase.config';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AuthService } from '../auth.service';
 
 
 interface User {
@@ -22,36 +23,30 @@ export class LoginComponent {
   password: string = '';
   auth: Auth | undefined;
 
-  constructor( 
-    private afAuth: AngularFireAuth, 
+  constructor(
+    private afAuth: AngularFireAuth,
     private router: Router,
-    private firestore: AngularFirestore
-) {
+    private firestore: AngularFirestore,
+    private authService: AuthService
+  ) {
     console.log(this.firestore);  // Check if Firestore is undefined
   }
 
   async gotoHome() {
     try {
-      const userCredential = await this.afAuth.signInWithEmailAndPassword(
+      const userData = await this.authService.login(
         this.username,
-        this.password
-      );
-      console.log('Login successful:', userCredential);
-      const userId = userCredential.user?.uid;
-  
-      // Fetch user role from Firestore
-      const userDoc = await this.firestore.collection('users').doc(userId).get().toPromise();
-      const userData = userDoc?.data() as User;
-  
+        this.password)
+
       if (userData && userData.role) {
         const role = userData.role; // Use the role directly
         console.log('User role:', role);
-  
+
         // Navigate to different routes based on the user role
-        if (role === 'admin') {
+        if (this.authService.isAdmin()) {
           console.log('Navigating to adminapproval');
           await this.router.navigate(['adminapproval']); // Redirect to Admin dashboard
-        } else if (role === 'user') {
+        } else if (this.authService.isUser()) {
           console.log('Navigating to homepage');
           await this.router.navigate(['homepage']); // Redirect to user homepage
         } else {
@@ -65,5 +60,5 @@ export class LoginComponent {
       console.error('Login failed:', error);
       alert('Login failed. Please check your credentials.');
     }
-  }  
+  }
 }  
