@@ -1,52 +1,56 @@
 import { Component } from '@angular/core';
 import { FirebaseService } from '../firebase.service';
 import { Router } from '@angular/router';
+import { EventDetailModalComponent } from '../event-detail-modal/event-detail-modal.component';
+import { MatDialog } from '@angular/material/dialog';
+import { EventService } from '../eventservice.service';
 
 @Component({
   selector: 'app-adminevent',
   templateUrl: './adminevent.component.html',
-  styleUrl: './adminevent.component.scss',
+  styleUrls: ['./adminevent.component.scss'],
 })
 export class AdmineventComponent {
-  adminevents: any[] = [];
+  events: any[] = [];
 
   public pageIndex = 0;
   public pageLimit = 100;
   public lastVisible = undefined;
+  afs: any;
 
   constructor(
     private firebaseService: FirebaseService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private eventService: EventService,
+    // Inject MatDialog directly in the constructor arguments
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
-    this.getadminevents();
+    // Fetch events from Firebase
+    this.eventService.getEvents().subscribe(data => {
+      this.events = data;
+    });
   }
 
-  getadminevents(): void {
-    this.firebaseService
-      .getAdminEvents(this.pageLimit, this.lastVisible)
-      .subscribe((data: any[]) => {
-        // Ensure timestamps are converted to JavaScript Date objects and filter approved adminevents (status: 1)
-        this.adminevents = data.map((item) => ({
-          ...item,
-          timestamp: item.timestamp ? new Date(item.timestamp) : new Date(), // Convert Firestore timestamp to JS Date
-        }));
-
-        // Sort by the converted Date object
-        this.adminevents = this.adminevents.reverse();
-      });
-  }
-
-  onPageChange(event: any): void {
-    this.pageIndex = event.pageIndex;
-    this.pageLimit = event.pageSize;
-
-    this.getadminevents();
+  // Method to open the modal dialog with event details
+  openDialog(event: any): void {
+    this.dialog.open(EventDetailModalComponent, {
+      data: event,
+      width: '600px'
+    });
   }
 
   goToNewEvents(): void {
     // Navigate to the "New Post" page
     this.router.navigateByUrl('new-event'); // Adjust the route if needed
   }
+
+  deletePost(eventId: string) {
+    this.afs.doc(`events/${eventId}`).delete()
+      .then(() => {
+        console.log('Event deleted successfully!');
+        // Handle success, e.g., update the UI or display a message
+      })
+}
 }

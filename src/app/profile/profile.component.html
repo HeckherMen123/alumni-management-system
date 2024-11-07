@@ -3,17 +3,12 @@
 
   <div class="tabs">
     <button class="tab-link active">User Information</button>
-    <button class="tab-link">My Posts</button>
   </div>
 
   <div class="profile-form">
     <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
       <div class="form-group">
-        <div class="avatar">
-          <!-- Display user profile image or a placeholder if not set -->
-          <!-- <img *ngIf="profileImageUrl" [src]="profileImageUrl" alt="Profile Image" /> -->
-          <!-- <input type="file" (change)="onFileSelected($event)" /> -->
-        </div>
+        <div class="avatar"></div>
 
         <div class="inputs">
           <div class="input-row">
@@ -26,7 +21,10 @@
             <input formControlName="contact" placeholder="Contact Number" />
           </div>
 
-          <textarea formControlName="backgroundInfo" placeholder="Background Information"></textarea>
+          <textarea
+            formControlName="backgroundInfo"
+            placeholder="Background Information"
+          ></textarea>
         </div>
       </div>
 
