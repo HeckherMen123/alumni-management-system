@@ -45,10 +45,10 @@ export class LoginComponent {
         // Navigate to different routes based on the user role
         if (this.authService.isAdmin()) {
           console.log('Navigating to adminapproval');
-          this.router.navigate(['adminapproval']); // Redirect to Admin dashboard
+          this.router.navigateByUrl('adminapproval'); // Redirect to Admin dashboard
         } else if (this.authService.isUser()) {
           console.log('Navigating to homepage');
-          this.router.navigate(['homepage']); // Redirect to user homepage
+          this.router.navigateByUrl('homepage'); // Redirect to user homepage
         } else {
           console.warn('Role not recognized. Redirecting to login.');
           this.router.navigate(['/login']); // Redirect to a default page if the role is not recognized

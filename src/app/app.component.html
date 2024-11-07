@@ -1,17 +1,16 @@
 <ng-container *ngIf="showSidebarLayout; else noSidebar">
-   <!-- Layout with Sidebar -->
-    <div class="app-container">
-      <app-sidebar></app-sidebar>
-      <div class="main-content">
-        <router-outlet></router-outlet>
-      </div>
+  <!-- Layout with Sidebar -->
+  <div class="app-container">
+    <app-sidebar></app-sidebar>
+    <div class="main-content">
+      <!-- <router-outlet></router-outlet> -->
     </div>
-  </ng-container>
-  
-  <!-- Layout without Sidebar (e.g., for login, register) -->
-  <ng-template #noSidebar>
-    <div class="app-container">
-      <router-outlet></router-outlet>
-    </div>
-  </ng-template>
-  
+  </div>
+</ng-container>
+
+<!-- Layout without Sidebar (e.g., for login, register) -->
+<ng-template #noSidebar>
+  <div class="app-container">
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>
