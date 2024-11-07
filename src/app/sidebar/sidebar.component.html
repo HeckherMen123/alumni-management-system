@@ -5,27 +5,27 @@
     </mat-toolbar>
 
     <mat-nav-list>
-      <a class="nav-item" mat-list-item href="homepage">
+      <a class="nav-item" mat-list-item routerLink="homepage">
         <mat-icon>home</mat-icon>
         <span class="nav-title">Home</span>
       </a>
-      <a class="nav-item" mat-list-item href="achievements">
+      <a class="nav-item" mat-list-item routerLink="achievements">
         <mat-icon>emoji_events</mat-icon>
         <span class="nav-title">Achievements</span>
       </a>
-      <a class="nav-item" mat-list-item href="events">
+      <a class="nav-item" mat-list-item routerLink="events">
         <mat-icon>event</mat-icon>
         <span class="nav-title">Events</span>
       </a>
-      <a class="nav-item" mat-list-item href="profiles">
+      <a class="nav-item" mat-list-item routerLink="profiles">
         <mat-icon>account_circle</mat-icon>
         <span class="nav-title">Profile</span>
       </a>
-      <a *ngIf="isAdmin()" class="nav-item" mat-list-item href="adminapproval">
+      <a *ngIf="isAdmin()" class="nav-item" mat-list-item routerLink="adminapproval">
         <mat-icon>account_circle</mat-icon>
         <span class="nav-title">Admin Approval</span>
       </a>
-      <a *ngIf="isAdmin()" class="nav-item" mat-list-item href="adminevent">
+      <a *ngIf="isAdmin()" class="nav-item" mat-list-item routerLink="adminevent">
         <mat-icon>account_circle</mat-icon>
         <span class="nav-title">Admin Event</span>
       </a>
