@@ -34,6 +34,7 @@ const year = today.getFullYear();
 })
 export class NewadmineventComponent {
   adminevent: FormGroup;
+  admineventForm: any;
 
   constructor(
     private fb: FormBuilder,
@@ -52,11 +53,13 @@ export class NewadmineventComponent {
   }
 
   submitForm() {
-    this.eventService.createEvent(this.adminevent.value);
-    this.router.navigateByUrl('/adminevent');
-    // throw new Error('Method not implemented.');
+    if (this.adminevent.valid) {
+      this.eventService.createEvent(this.adminevent.value);
+      this.router.navigateByUrl('/adminevent');
+    }else{
+      alert('Please fill in all required fields.')
+    }
   }
-
   cancel() {
     this.router.navigateByUrl('/adminevent');
   }

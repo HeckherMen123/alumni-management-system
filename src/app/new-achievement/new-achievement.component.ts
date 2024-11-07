@@ -53,10 +53,7 @@ export class NewAchievementComponent {
   }
 
   imageHandler = () => {console.log("testing log")
-    // const range = this.quillEditorRef.getSelection();
-    // const img = '<a href="https://image.flaticon.com/icons/png/128/126/126477.png" data-lightbox="image-1" data-title="My caption"> <div> <img src="https://image.flaticon.com/icons/png/128/126/126477.png" height="50"/> </div> </a>';
-    // this.quillEditorRef.clipboard.dangerouslyPasteHTML(range.index, img);
-
+ 
     const range = this.quillEditorRef.getSelection();
 
     const input = document.createElement('input');

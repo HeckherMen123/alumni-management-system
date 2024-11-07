@@ -1,23 +1,29 @@
 <div class="adminevent-form">
   <form [formGroup]="adminevent">
     <div class="form-group">
-
       <div class="inputs">
         <div class="input-row">
-          <input formControlName="title" placeholder="Event Title" />
-          <textarea formControlName="description" placeholder="Event Description"></textarea>
+          <input formControlName="title" placeholder="Event Title" required />
+          <textarea
+            formControlName="description"
+            placeholder="Event Description"
+            required
+          ></textarea>
         </div>
 
         <div class="input-row">
-          <input formControlName="organizer" placeholder="Organizer" />
-          <input formControlName="presenter" placeholder="Presenter" />
+          <input formControlName="organizer" placeholder="Organizer" required />
+          <input formControlName="presenter" placeholder="Presenter" required />
         </div>
 
         <mat-form-field class="DatePicker">
           <mat-label>Choose a date</mat-label>
           <input matInput [matDatepicker]="datepicker" formControlName="date" />
           <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
           <mat-datepicker #datepicker>
             <mat-datepicker-actions>
               <button mat-button matDatepickerCancel>Cancel</button>
@@ -27,11 +33,15 @@
         </mat-form-field>
 
         <div class="input-row">
-          <input formControlName="time" placeholder="Enter the Time" />
+          <input formControlName="time" placeholder="Enter the Time" required />
         </div>
 
         <div class="input-row">
-          <input formControlName="venue" placeholder="Enter the Venue" />
+          <input
+            formControlName="venue"
+            placeholder="Enter the Venue"
+            required
+          />
         </div>
       </div>
     </div>
